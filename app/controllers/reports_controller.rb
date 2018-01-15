@@ -3,8 +3,17 @@ class ReportsController < ApplicationController
 
   def index
     @search = ReportSearch.new(params[:search])
-    @reports = @search.scope
+    @reports = @search.scope.order(sort_column + " " + sort_direction).paginate(:per_page => 50, :page => params[:page])
     #@reports = Report.order(sort_column + " " + sort_direction).paginate(:per_page => 50, :page => params[:page])
+
+    @total_calls = @reports.size
+    @unique_calls = @reports.map(&:caller_id).uniq.size
+    @converted_calls = @reports.select {|x| x['payout'] > 0.0}.size
+    @payout = @reports.map {|x| x['payout'] }.sum
+    respond_to do |format|
+      format.html
+      format.csv { send_data @reports.to_csv, filename: "report-#{Date.today}.csv" }
+    end
   end
 
   private
@@ -14,7 +23,7 @@ class ReportsController < ApplicationController
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
 
 end

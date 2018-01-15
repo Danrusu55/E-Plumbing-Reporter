@@ -1,42 +1,74 @@
+<div class="row bg-success">
+  <h1>Bull Horn Media—IVR Campaign Results</h1>
+</div>
+<hr>
 <div class="row">
-  <h1>Listing invoices</h1>
-  <div class="pull-right range-query">
-    <%= form_tag reports_path, method: :get do %>
-      <%= text_field_tag 'search[date_from]', @search.date_from %>
-      <%= text_field_tag 'search[date_to]', @search.date_to %>
-      <%= submit_tag 'Search', class: 'btn search-button' %>
+  <div class="pull-left range-query">
+    <%= form_tag reports_path, method: :get, :class => 'form-inline' do %>
+      <div class="form-group">
+        <%= text_field_tag 'search[date_from]', @search.date_from, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag 'search[date_to]', @search.date_to, class: "form-control" %>
+      </div>
+      <%= submit_tag 'Search', class: 'btn btn-default btn-submit' %>
     <% end %>
+  </div>
+  <div class="pull-right">
+    <a href="/reports.csv" class="btn btn-default">Export to CSV</a>
   </div>
 </div>
 
-<h1>Report</h1>
+<div class="row">
+  <h3>Totals</h3>
 
-<table>
-  <tr>
-    <th><%= sortable "date_of_call", "Date of Call" %></th>
-    <th><%= sortable "caller_id", "Caller Id" %></th>
-    <th><%= sortable "category", "Category" %></th>
-    <th><%= sortable "city", "City" %></th>
-    <th><%= sortable "zip", "Zip" %></th>
-    <th><%= sortable "screen", "Screen" %></th>
-    <th><%= sortable "post_screen", "Post Screen" %></th>
-    <th><%= sortable "total_duration", "Total Duration" %></th>
-    <th><%= sortable "disposition", "Disposition" %></th>
-    <th><%= sortable "payout", "Payout" %></th>
-  </tr>
-
-  <% @reports.each do |report| %>
+  <table class="table table-striped table-hover">
     <tr>
-      <td><%= report.date_of_call %></td>
-      <td><%= report.caller_id %></td>
-      <td><%= report.category %></td>
-      <td><%= report.city %></td>
-      <td><%= report.zip %></td>
-      <td><%= report.screen %></td>
-      <td><%= report.post_screen %></td>
-      <td><%= report.total_duration %></td>
-      <td><%= report.disposition %></td>
-      <td>$<%= report.payout %></td>
+      <th>Total Calls</th>
+      <th>Unique Calls</th>
+      <th>Converted</th>
+      <th>Payout</th>
     </tr>
-  <% end %>
-</table>
+
+    <tr>
+      <td><%= @total_calls %></td>
+      <td><%= @unique_calls %></td>
+      <td><%= @converted_calls %></td>
+      <td><%= @payout %></td>
+    </tr>
+  </table>
+
+  <h3>Calls</h3>
+
+  <table class="table table-striped table-hover">
+    <tr>
+      <th><%= sortable "date_of_call", "Date of Call" %></th>
+      <th><%= sortable "caller_id", "Caller Id" %></th>
+      <th><%= sortable "category", "Category" %></th>
+      <th><%= sortable "city", "City" %></th>
+      <th><%= sortable "zip", "Zip" %></th>
+      <th><%= sortable "screen", "Screen" %></th>
+      <th><%= sortable "post_screen", "Post Screen" %></th>
+      <th><%= sortable "total_duration", "Total Duration" %></th>
+      <th><%= sortable "disposition", "Disposition" %></th>
+      <th><%= sortable "payout", "Payout" %></th>
+    </tr>
+
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.date_of_call %></td>
+        <td><%= report.caller_id %></td>
+        <td><%= report.category %></td>
+        <td><%= report.city %></td>
+        <td><%= report.zip %></td>
+        <td><%= report.screen %></td>
+        <td><%= report.post_screen %></td>
+        <td><%= report.total_duration %></td>
+        <td><%= report.disposition %></td>
+        <td>$<%= report.payout %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= will_paginate @products %>
+</div>

@@ -1,33 +1,61 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title>SortableTableColumns</title>
-  <%= stylesheet_link_tag    '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <title>Carlgrp Report</title>
+    <%= stylesheet_link_tag    '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
   </head>
 
   <body>
+    <nav class="navbar bg-white border-top-0" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <%= image_tag("logo_spaceless.png", :alt => "logo") %>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="nav nav-tabs pull-right" role="tablist">
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to 'Manage Account', edit_user_registration_path, :class => 'navbar-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <hr>
+
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-    <%= yield %>
+    <div class="container-fluid">
+      <%= yield %>
 
-    <p class="navbar-text pull-right">
-      <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-      <% end %>
-      </p>
+      <hr>
 
-  </body>
+        <footer class="bg-dark text-center">
+          <%= image_tag("logo.png", :alt => "logo") %>
+          <p>&copy; CarlGrp <%= DateTime.now.year %> | <%= link_to "Home", reports_path %></p>
+        </footer>
+    </div>
+
+</body>
 </html>

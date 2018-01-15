@@ -14,6 +14,7 @@
  *= require_self
  */
 
+
  .pretty th .current {
    padding-right: 12px;
    background-repeat: no-repeat;
@@ -26,4 +27,9 @@
 
  .pretty th .desc {
    background-image: url(/images/down_arrow.gif);
- }  
+ }
+
+.container-fluid {
+  padding-left: 50px;
+  padding-right: 50px;
+}
