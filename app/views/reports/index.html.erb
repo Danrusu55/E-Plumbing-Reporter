@@ -1,0 +1,31 @@
+<h1>Report</h1>
+
+<table>
+  <tr>
+    <th>Date of Call</th>
+    <th>Caller Id</th>
+    <th>Category</th>
+    <th>City</th>
+    <th>Zip</th>
+    <th>Screen</th>
+    <th>Post Screen</th>
+    <th>Total Duration</th>
+    <th>Disposition</th>
+    <th>Payout</th>
+  </tr>
+
+  <% @reports.each do |report| %>
+    <tr>
+      <td><%= report.date_of_call %></td>
+      <td><%= report.caller_id %></td>
+      <td><%= report.category %></td>
+      <td><%= report.city %></td>
+      <td><%= report.zip %></td>
+      <td><%= report.screen %></td>
+      <td><%= report.post_screen %></td>
+      <td><%= report.total_duration %></td>
+      <td><%= report.disposition %></td>
+      <td>$<%= report.payout %></td>
+    </tr>
+  <% end %>
+</table>

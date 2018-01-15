@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_of_call: 2018-01-15 08:35:25
+  caller_id: MyString
+  category: MyString
+  city: MyString
+  zip: MyString
+  screen: MyString
+  post_screen: MyString
+  total_duration: MyString
+  disposition: MyString
+  payout: 1.5
+
+two:
+  date_of_call: 2018-01-15 08:35:25
+  caller_id: MyString
+  category: MyString
+  city: MyString
+  zip: MyString
+  screen: MyString
+  post_screen: MyString
+  total_duration: MyString
+  disposition: MyString
+  payout: 1.5

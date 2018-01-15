@@ -1,0 +1,37 @@
+DATA PULLING SCRIPT - hourly:
+  https://www.elocal.com/partner_users/login?redirect_to=%2Fpartner_users
+  login
+  https://www.elocal.com/partner_users/campaign_results?end_date=2018-01-11&id=8144&page=1&start_date=2018-01-11
+  calls = export if can export else row one by one. random subtract $5 only if > 10
+    collect only until time is greater than 1 hour ago from current est time
+  adjustments = adjustment details.
+
+
+
+RAILS
+  login
+  calls rows
+  adjustments rows
+  can filter and export
+  my account page
+
+
+
+
+  require 'pry'
+  require 'mechanize'
+  require 'logger'
+
+  agent = Mechanize.new
+  agent.log = Logger.new "mech.log"
+  agent.user_agent_alias = "Mac Safari"
+
+  page  = agent.get "https://www.elocal.com/partner_users/login"
+  login_form = page.forms.first
+  login_form.field_with(:name => "partner_user[username]").value = "danie7rusu@gmail.com"
+  login_form.field_with(:name => "partner_user[password]").value = "welcome"
+
+  page = agent.submit(login_form)
+
+  binding.pry
+  puts page.body
