@@ -2,16 +2,16 @@
 
 <table>
   <tr>
-    <th>Date of Call</th>
-    <th>Caller Id</th>
-    <th>Category</th>
-    <th>City</th>
-    <th>Zip</th>
-    <th>Screen</th>
-    <th>Post Screen</th>
-    <th>Total Duration</th>
-    <th>Disposition</th>
-    <th>Payout</th>
+    <th><%= sortable "date_of_call", "Date of Call" %></th>
+    <th><%= sortable "caller_id", "Caller Id" %></th>
+    <th><%= sortable "category", "Category" %></th>
+    <th><%= sortable "city", "City" %></th>
+    <th><%= sortable "zip", "Zip" %></th>
+    <th><%= sortable "screen", "Screen" %></th>
+    <th><%= sortable "post_screen", "Post Screen" %></th>
+    <th><%= sortable "total_duration", "Total Duration" %></th>
+    <th><%= sortable "disposition", "Disposition" %></th>
+    <th><%= sortable "payout", "Payout" %></th>
   </tr>
 
   <% @reports.each do |report| %>
@@ -29,3 +29,5 @@
     </tr>
   <% end %>
 </table>
+
+<%= will_paginate @products %>

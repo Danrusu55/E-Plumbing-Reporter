@@ -675,3 +675,142 @@ Processing by ReportsController#index as HTML
 Completed 200 OK in 66ms (Views: 38.3ms | ActiveRecord: 1.6ms)
 
 
+Started GET "/reports" for 127.0.0.1 at 2018-01-15 10:53:36 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReportsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering reports/index.html.erb within layouts/application
+  [1m[36mReport Load (0.3ms)[0m  [1m[34mSELECT "reports".* FROM "reports"[0m
+  Rendered reports/index.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 498ms (Views: 462.5ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/reports" for 127.0.0.1 at 2018-01-15 10:58:56 -0800
+Processing by ReportsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 401 Unauthorized in 18ms (ActiveRecord: 1.0ms)
+
+
+  
+NameError (uninitialized constant ReportsController::Product):
+  
+app/controllers/reports_controller.rb:11:in `sort_column'
+app/controllers/reports_controller.rb:5:in `index'
+  Rendering /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.4ms)
+  Rendering /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendering /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (94.8ms)
+Started GET "/reports" for 127.0.0.1 at 2018-01-15 10:59:59 -0800
+Processing by ReportsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering reports/index.html.erb within layouts/application
+  [1m[36mReport Load (2.5ms)[0m  [1m[34mSELECT "reports".* FROM "reports" ORDER BY date_of_call asc[0m
+  Rendered reports/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 100ms (Views: 79.0ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/?direction=asc&sort=caller_id" for 127.0.0.1 at 2018-01-15 11:00:03 -0800
+Processing by ReportsController#index as HTML
+  Parameters: {"direction"=>"asc", "sort"=>"caller_id"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering reports/index.html.erb within layouts/application
+  [1m[36mReport Load (0.7ms)[0m  [1m[34mSELECT "reports".* FROM "reports" ORDER BY caller_id asc[0m
+  Rendered reports/index.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 64ms (Views: 53.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/?direction=asc&sort=category" for 127.0.0.1 at 2018-01-15 11:00:04 -0800
+Processing by ReportsController#index as HTML
+  Parameters: {"direction"=>"asc", "sort"=>"category"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering reports/index.html.erb within layouts/application
+  [1m[36mReport Load (0.3ms)[0m  [1m[34mSELECT "reports".* FROM "reports" ORDER BY category asc[0m
+  Rendered reports/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 62ms (Views: 53.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/?direction=asc&sort=date_of_call" for 127.0.0.1 at 2018-01-15 11:00:05 -0800
+Processing by ReportsController#index as HTML
+  Parameters: {"direction"=>"asc", "sort"=>"date_of_call"}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering reports/index.html.erb within layouts/application
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT "reports".* FROM "reports" ORDER BY date_of_call asc[0m
+  Rendered reports/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 68ms (Views: 54.5ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/?direction=asc&sort=date_of_call" for 127.0.0.1 at 2018-01-15 11:44:32 -0800
+Processing by ReportsController#index as HTML
+  Parameters: {"direction"=>"asc", "sort"=>"date_of_call"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT "reports".* FROM "reports" ORDER BY date_of_call asc[0m
+Completed 401 Unauthorized in 90ms (ActiveRecord: 2.8ms)
+
+
+  
+NoMethodError (undefined method `paginate' for #<Report::ActiveRecord_Relation:0x007ff2eef594c8>):
+  
+app/controllers/reports_controller.rb:5:in `index'
+  Rendering /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (12.9ms)
+  Rendering /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendering /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (119.8ms)
+Started GET "/?direction=asc&sort=date_of_call" for 127.0.0.1 at 2018-01-15 11:45:54 -0800
+Processing by ReportsController#index as HTML
+  Parameters: {"direction"=>"asc", "sort"=>"date_of_call"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 401 Unauthorized in 33ms (ActiveRecord: 0.9ms)
+
+
+  
+NoMethodError (undefined method `paginate' for #<Class:0x007ff2ef091700>):
+  
+app/controllers/reports_controller.rb:5:in `index'
+  Rendering /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.8ms)
+  Rendering /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendering /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/danrusu/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (92.1ms)
+Started GET "/?direction=asc&sort=date_of_call" for 127.0.0.1 at 2018-01-15 11:47:47 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReportsController#index as HTML
+  Parameters: {"direction"=>"asc", "sort"=>"date_of_call"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering reports/index.html.erb within layouts/application
+  [1m[36mReport Load (0.5ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" ORDER BY date_of_call asc LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+  Rendered reports/index.html.erb within layouts/application (25.4ms)
+Completed 200 OK in 496ms (Views: 453.1ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/?direction=desc&sort=date_of_call" for 127.0.0.1 at 2018-01-15 11:47:52 -0800
+Processing by ReportsController#index as HTML
+  Parameters: {"direction"=>"desc", "sort"=>"date_of_call"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering reports/index.html.erb within layouts/application
+  [1m[36mReport Load (0.7ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" ORDER BY date_of_call desc LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+  Rendered reports/index.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 63ms (Views: 52.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/?direction=desc&sort=date_of_call" for 127.0.0.1 at 2018-01-15 11:48:02 -0800
+Processing by ReportsController#index as HTML
+  Parameters: {"direction"=>"desc", "sort"=>"date_of_call"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering reports/index.html.erb within layouts/application
+  [1m[36mReport Load (2.3ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" ORDER BY date_of_call desc LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "reports"[0m
+  Rendered reports/index.html.erb within layouts/application (54.9ms)
+Completed 200 OK in 102ms (Views: 77.9ms | ActiveRecord: 4.0ms)
+
+
