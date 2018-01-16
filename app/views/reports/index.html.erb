@@ -15,7 +15,7 @@
     <% end %>
   </div>
   <div class="pull-right">
-    <a href="/reports.csv" class="btn btn-default">Export to CSV</a>
+    <%= link_to "Export to CSV", "/reports.csv?search%5Bdate_from%5D=#{@search.date_from}&search%5Bdate_to%5D=#{@search.date_to}"  %>
   </div>
 </div>
 
@@ -34,7 +34,7 @@
       <td><%= @total_calls %></td>
       <td><%= @unique_calls %></td>
       <td><%= @converted_calls %></td>
-      <td><%= @payout %></td>
+      <td>$<%= @payout.round(3) %></td>
     </tr>
   </table>
 
@@ -70,5 +70,5 @@
     <% end %>
   </table>
 
-  <%= will_paginate @products %>
+
 </div>

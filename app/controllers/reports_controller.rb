@@ -3,12 +3,11 @@ class ReportsController < ApplicationController
 
   def index
     @search = ReportSearch.new(params[:search])
-    @reports = @search.scope.order(sort_column + " " + sort_direction).paginate(:per_page => 50, :page => params[:page])
-    #@reports = Report.order(sort_column + " " + sort_direction).paginate(:per_page => 50, :page => params[:page])
-
+    @reports = @search.scope.order(sort_column + " " + sort_direction)
+    
     @total_calls = @reports.size
     @unique_calls = @reports.map(&:caller_id).uniq.size
-    @converted_calls = @reports.select {|x| x['payout'] > 0.0}.size
+    @converted_calls = @reports.select {|x| x['disposition'].include?('Paid')}.size
     @payout = @reports.map {|x| x['payout'] }.sum
     respond_to do |format|
       format.html
