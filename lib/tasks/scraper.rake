@@ -7,7 +7,7 @@ require 'tzinfo'
 namespace :scraper do
   desc "Get calls for the last hour"
 
-  task get_calls: :environment do
+  task calls: :environment do
     YEAR, MONTH, DATE  = Time.now.year, Time.now.strftime("%m"), Time.now.day
 
     browser = Watir::Browser.new :chrome, headless: true
@@ -30,7 +30,7 @@ namespace :scraper do
         row = call_table[num]
         datetime_of_call = Time.strptime("#{row[0].text} -05:00", '%m/%d/%y %I:%M %p %z')
         datetime_in_est = Time.now.getlocal('-05:00')
-        next if (datetime_in_est - datetime_of_call) / 3600 > 1
+        next if (datetime_in_est - datetime_of_call) / 3600 > 24
 
         date_of_call = row[0].text
         arr_date = date_of_call.split("/")

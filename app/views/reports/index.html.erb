@@ -34,7 +34,7 @@
       <td><%= @total_calls %></td>
       <td><%= @unique_calls %></td>
       <td><%= @converted_calls %></td>
-      <td>$<%= @payout.round(3) %></td>
+      <td>$<%= @payout.round(2) %></td>
     </tr>
   </table>
 
@@ -65,7 +65,7 @@
         <td><%= report.post_screen %></td>
         <td><%= report.total_duration %></td>
         <td><%= report.disposition %></td>
-        <td>$<%= report.payout %></td>
+        <td>$<%= report.payout.round(2) %></td>
       </tr>
     <% end %>
   </table>
