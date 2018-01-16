@@ -3840,3 +3840,20 @@ Processing by ReportsController#index as HTML
 Completed 200 OK in 160ms (Views: 122.1ms | ActiveRecord: 5.5ms)
 
 
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(279088437195799245);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(279088437195799245)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for 127.0.0.1 at 2018-01-16 10:42:03 -0800
+Processing by ReportsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "reports" WHERE (date_of_call BETWEEN '2018-01-09' AND '2018-01-17')[0m
+  [1m[36mReport Load (5.7ms)[0m  [1m[34mSELECT "reports".* FROM "reports" WHERE (date_of_call BETWEEN '2018-01-09' AND '2018-01-17') ORDER BY date_of_call desc[0m
+  Rendering reports/index.html.erb within layouts/application
+  Rendered reports/index.html.erb within layouts/application (86.2ms)
+Completed 200 OK in 354ms (Views: 231.1ms | ActiveRecord: 19.8ms)
+
+

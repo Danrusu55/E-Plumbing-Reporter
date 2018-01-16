@@ -10,7 +10,7 @@ namespace :scraper do
   task calls: :environment do
     YEAR, MONTH, DATE  = Time.now.year, Time.now.strftime("%m"), Time.now.day
 
-    browser = Watir::Browser.new :chrome, headless: true
+    browser = Watir::Browser.new :phantomjs
 
     browser.goto 'https://www.elocal.com/partner_users/login'
 
